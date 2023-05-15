@@ -1,0 +1,112 @@
+[
+  {
+    "moduleName": "Comercial",
+    "module": [
+      {
+        "name": "Ventas",
+        "roles": ["ADMINISTRADOR", "PERSONAL"],
+        "subItem": [
+          {
+            "name": "Listado de Ventas",
+            "path": "/dashboard/commercial/sales"
+          },
+          {
+            "name": "Emitir Venta",
+            "path": "/dashboard/commercial/sales/store"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "moduleName": "Almacen",
+    "module": [
+      {
+        "name": "Productos",
+        "roles": ["ADMINISTRADOR", "PERSONAL"],
+        "subItem": [
+          {
+            "name": "Listar",
+            "path": "/dashboard/store/product"
+          },
+          {
+            "name": "Registrar",
+            "path": "/dashboard/store/product/create"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "moduleName": "Configuración",
+    "module": [
+      {
+        "name": "Marcas",
+        "roles": ["ADMINISTRADOR", "PERSONAL"],
+        "subItem": [
+          {
+            "name": "Listar",
+            "path": "/dashboard/configuration/brand"
+          },
+          {
+            "name": "Registrar",
+            "path": "/dashboard/configuration/brand/create"
+          }
+        ]
+      },
+      {
+        "name": "Categorias",
+        "roles": ["ADMINISTRADOR", "PERSONAL"],
+        "subItem": [
+          {
+            "name": "Listar",
+            "path": "/dashboard/configuration/category"
+          },
+          {
+            "name": "Registrar",
+            "path": "/dashboard/configuration/category/create"
+          }
+        ]
+      },
+      {
+        "name": "Usuarios",
+        "roles": ["ADMINISTRADOR"],
+        "subItem": [
+          {
+            "name": "Listar",
+            "path": "/dashboard/configuration/user"
+          },
+          {
+            "name": "Registrar",
+            "path": "/dashboard/configuration/user/create"
+          }
+        ]
+      },
+
+      {
+        "name": "Sucursales",
+        "roles": ["ADMINISTRADOR"],
+        "subItem": [
+          {
+            "name": "Listar",
+            "path": "/dashboard/configuration/sucursal"
+          },
+          {
+            "name": "Registrar",
+            "path": "/dashboard/configuration/sucursal/create"
+          }
+        ]
+      },
+      {
+        "name": "Empresa",
+        "roles": ["ADMINISTRADOR"],
+        "subItem": [
+          {
+            "name": "Empresa",
+            "path": "/dashboard/configuration/company"
+          }
+        ]
+      }
+    ]
+  }
+]
