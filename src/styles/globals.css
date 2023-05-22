@@ -27,3 +27,27 @@ input{
 textarea{
   text-transform: uppercase;
 }
+
+/* Spiner de carga */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 5px;
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.spinner-loader {
+  border-top-color: transparent;
+  width: 60px;
+  height: 60px;
+}

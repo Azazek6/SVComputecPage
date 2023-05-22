@@ -11,39 +11,55 @@ let title = [
     name: "Nombre",
   },
   {
+    key: "lastnamep",
+    name: "Apellido Paterno",
+  },
+  {
+    key: "lastnamem",
+    name: "Apellido Materno",
+  },
+  {
+    key: "username",
+    name: "Usuario",
+  },
+  {
+    key: "rol",
+    name: "rol",
+  },
+  {
     key: "status",
     name: "Estado",
   },
 ];
 
 const Home = () => {
-  const router = useRouter();
+  const { auth, fetchUsers, user } = useGlobal();
 
-  const { auth, brand, fecthBrand } = useGlobal();
+  const router = useRouter()
 
   useEffect(() => {
-    fecthBrand(auth.idCompany);
-  }, [auth.idCompany, fecthBrand]);
+    fetchUsers(auth.idCompany);
+  }, [auth.idCompany, fetchUsers]);
 
   return (
     <Layout>
       <div className="container mx-auto px-4">
         <div className="py-8">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-semibold">Listado de marcas</h2>
+            <h2 className="text-2xl font-semibold">Listado de usuarios</h2>
             {/* Agrega un botón para registrar nuevas marcas */}
             <button
               onClick={(e) => {
                 e.preventDefault();
-                router.push("/dashboard/configuration/brand/create");
+                router.push("/dashboard/configuration/user/create");
               }}
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-800 flex items-center"
             >
               <FiPlus className="mr-2" />
-              Nueva Marca
+              Nueva Usuario
             </button>
           </div>
-          <TableListSimple title={title} data={brand} />
+          <TableListSimple title={title} data={user} />
         </div>
       </div>
     </Layout>

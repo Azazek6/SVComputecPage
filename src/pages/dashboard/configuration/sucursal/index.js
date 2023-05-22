@@ -7,10 +7,6 @@ import { useGlobal } from "../../../../context/GlobalProvider";
 
 let title = [
   {
-    key: "_id",
-    name: "ID",
-  },
-  {
     key: "name",
     name: "Nombre",
   },

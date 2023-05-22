@@ -18,6 +18,12 @@ const TableListSimple = ({ title, data, pageSize = 5 }) => {
         <table className="w-[100%] divide-y divide-gray-200">
           <thead className="bg-blue-600">
             <tr>
+              <th
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
+              >
+                #
+              </th>
               {title.map(({ name }) => (
                 <th
                   key={name}
@@ -37,9 +43,20 @@ const TableListSimple = ({ title, data, pageSize = 5 }) => {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {/* Aquí deberás realizar un mapeo de tus datos para generar las filas */}
-            {currentData?.map((datas) => {
+            {currentData?.map((datas, index) => {
+              const globalIndex = (currentPage - 1) * pageSize + index + 1;
+
               return (
                 <tr key={datas._id}>
+                  <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap sm:px-2 md:px-3 lg:px-4 xl:px-6 sm:text-sm md:text-base lg:text-base xl:text-base">
+                    <div className="flex items-center">
+                      <div className="ml-4">
+                        <div className="text-sm font-medium text-gray-900">
+                          {globalIndex}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
                   {title?.map((item) => {
                     const value = datas[item.key];
                     return (

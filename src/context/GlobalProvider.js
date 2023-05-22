@@ -25,11 +25,13 @@ export const GlobalContextProvider = ({ children }) => {
     idSucursal: "64323aa8a894d22d072fa1b3",
     idCompany: "643225d2b48bc28f4f03ac00",
   });
+  const [user, setUser] = useState([])
   const [brand, setBrand] = useState([]);
   const [category, setCategory] = useState([]);
   const [sucursal, setSucursal] = useState([]);
   const [product, setProduct] = useState([]);
   // Gnerales
+  const [openNotification, setOpenNotification] = useState(false)
   const [openMessage, setOpenMessage] = useState(false)
   const [productArray, setProductArray] = useState([])
 
@@ -49,7 +51,21 @@ export const GlobalContextProvider = ({ children }) => {
     });
   };
 
-  //Funciones fecth
+  //Funciones 
+  //Usuario
+  const fetchUsers = async (company)=>{
+    try {
+      const { data } = await axios.get(
+        `${connectURL}/configuration/users/${company}`
+      );
+      setUser(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  const insertUser = async (user) =>{
+    return axios.post(`${connectURL}/configuration/users`, user);
+  }
   //Marca
   const fecthBrand = async (company) => {
     try {
@@ -61,7 +77,7 @@ export const GlobalContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const fecthBrandInsert = async (brand) => {
+  const insertBrand = async (brand) => {
     return axios.post(`${connectURL}/configuration/brands`, brand);
   };
   //Categoria
@@ -75,7 +91,7 @@ export const GlobalContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const fecthCategoryInsert = async (category) => {
+  const insertCategory = async (category) => {
     return axios.post(`${connectURL}/configuration/categories`, category);
   };
   //Sucursal
@@ -89,7 +105,7 @@ export const GlobalContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const fecthSucursalInsert = async (sucursal) => {
+  const insertSucursal = async (sucursal) => {
     return axios.post(`${connectURL}/configuration/branchs`, sucursal);
   };
   //Producto
@@ -101,11 +117,12 @@ export const GlobalContextProvider = ({ children }) => {
       console.log(error);
     }
   };
-  const fecthProductInsert = async (product) => {
+  const insertProduct = async (product) => {
     return axios.post(`${connectURL}/store/products`, product);
   };
 
   // Generales
+  const showNotification = () => setOpenNotification(true)
   const showModal = () => {
     setOpenMessage(!openMessage);
   };
@@ -118,25 +135,32 @@ export const GlobalContextProvider = ({ children }) => {
     });
     setProductArray(removeProducts);
   };
+
   return (
     <GlobalContext.Provider
       value={{
+        openNotification,
+        setOpenNotification,
         auth,
+        user,
         brand,
         category,
         sucursal,
         product,
+        showNotification,
         openMessage,
         productArray,
         signIn,
+        insertUser,
+        fetchUsers,
         fecthBrand,
-        fecthBrandInsert,
+        insertBrand,
         fecthCategory,
-        fecthCategoryInsert,
+        insertCategory,
         fecthSucursal,
-        fecthSucursalInsert,
+        insertSucursal,
         fecthProduct,
-        fecthProductInsert,
+        insertProduct,
         showModal,
         addProduct,
         removeProductsArray,

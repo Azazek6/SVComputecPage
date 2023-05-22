@@ -1,4 +1,4 @@
 const uriWeb = "";
-const uriLocal = "http://localhost:4000/api";
+const uriLocal = "http://localhost:5000/api";
 
 export const connectURL = uriLocal;
